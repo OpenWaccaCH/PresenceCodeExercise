@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexTestSuite</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>Payments_Code_Exercise</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>*</members>
+        <members>Contact</members>
+        <name>CustomObject</name>
+    </types> 
+    <types>
+        <members>*</members>
+        <name>CustomTab</name>
+    </types> 
+    <types>
+        <members>Contact_Record_Page</members>
+        <members>Payment_Record_Page</members>
+        <members>Project_Record_Page</members>
+        <name>FlexiPage</name>
+    </types> 
+    <types>
+        <members>Contact-Contact Layout</members>
+        <members>Payment__c-Payment Layout</members>
+        <members>Project__c-Project Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <version>48.0</version>
+</Package>

@@ -1,0 +1,47 @@
+<template>
+	<div class="slds-card">
+		<!-- Display summary info for the Project -->
+		<header class="slds-card__header slds-grid">
+		  <div class="slds-media slds-media--center slds-has-flexi-truncate">
+			<div class="slds-media__figure">
+			  <svg aria-hidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small">
+				<use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+			  </svg>
+			</div>
+			<div class="slds-media__body slds-truncate">
+			  <h2>
+				<a href="javascript:void(0);" class="slds-text-link--reset">
+				  <span class="slds-text-heading--small">Project Payments</span>
+				</a>
+			  </h2>
+			</div>
+		  </div>
+		  <div class="slds-no-flex slds-text-heading_small slds-var-p-around_x-small">
+			<template if:true={project.data}>
+				Total&nbsp;Payments:&nbsp;<lightning-formatted-number value={totalPayments} format-style="currency" currency-code="USD"></lightning-formatted-number>
+			</template>
+		  </div>
+		</header>
+		<div class="slds-card__body_inner">
+			<!-- Start contact list -->
+			<template if:true={contacts.data}>
+                <template for:each={contacts.data} for:item="wrapper">
+					<!-- Bring in the child component, passing contact records with related payments and setting up an event handler -->
+                    <c-contact-payments key={wrapper.contactRecord.Id} projectid={recordId} contact-record={wrapper.contactRecord} onrequestdatarefresh={refreshData}></c-contact-payments>
+                </template>
+                <template if:false={hasResults}>
+                    <div class="slds-align_absolute-center slds-m-vertical_small">
+                        No payments have been made to this Project.
+                    </div>
+                </template>
+			</template>
+			<!-- End contact list -->
+			<!-- Data failed to load -->
+			<template if:true={pageErrors}>
+				<div class="slds-text-color_error errorDisplay">
+					{pageErrors}
+				</div>
+			</template>
+		</div>
+	</div>
+</template>

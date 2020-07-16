@@ -1,0 +1,35 @@
+<template>
+    <!-- Display information and summary information about the Contact -->
+    <div class="slds-grid contactHeader">
+        <div class="slds-col slds-size_5-of-12 slds-text-heading_small slds-text-color_inverse headerElement">
+            {contact.Name}
+        </div>
+        <div class="slds-col slds-size_3-of-12 slds-text-heading_small slds-text-color_inverse-weak headerElement">
+            Total&nbsp;Payments:&nbsp;<lightning-formatted-number value={contact.Total_Payments__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
+        </div>
+        <div class="slds-col slds-size_3-of-12 slds-text-heading_small slds-text-color_inverse-weak headerElement">
+            Most&nbsp;Recent:&nbsp;{contact.Most_Recent_Payment__c}
+        </div>
+        <div class="slds-col slds-size_1-of-12 headerElement">
+            <lightning-button-icon onclick={handleAddPayment} icon-name="utility:add" variant="border-filled" size="x-small" alternative-text="New Payment" title="New Payment"></lightning-button-icon>
+        </div>
+    </div>
+
+    <!-- Display page level errors if there are any -->
+    <template if:true={pageErrors}>
+        <div class="slds-text-color_error errorDisplay">
+            {pageErrors}
+        </div>
+    </template>
+    
+    <!-- Display the list of payments for the Contact -->
+    <lightning-datatable
+        key-field="Id"
+        data={data}
+        draft-values={draftValues}
+        columns={columns}
+        onrowaction={handleRowAction}
+        onsave={handleSave}
+        errors={tableErrors}>
+    </lightning-datatable>
+</template>

@@ -1,0 +1,8 @@
+.contactHeader{
+    background:#16325c;
+    height: 40px;
+}
+.contactHeader .headerElement{
+    margin: auto 0;
+    padding: 0 16px;
+}
